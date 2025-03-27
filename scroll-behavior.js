@@ -2,14 +2,12 @@
 
 /**
  * This script implements modern UI behaviors:
- * 1. Hide/show header on scroll
- * 2. Staggered animations for list items
- * 3. Skeleton loading for content
- * 4. Modern filter bar behavior
+ * 1. Staggered animations for list items
+ * 2. Skeleton loading for content
+ * 3. Modern filter bar behavior
  */
 document.addEventListener('DOMContentLoaded', function() {
-  // Header visibility on scroll
-  implementHeaderScrollBehavior();
+  // Header visibility features removed as per user request
   
   // Animate items as they enter the viewport
   implementListItemAnimations();
@@ -20,39 +18,6 @@ document.addEventListener('DOMContentLoaded', function() {
   // Implement filter bar behavior
   implementFilterBarBehavior();
 });
-
-/**
- * Implements hide/show behavior for header on scroll
- */
-function implementHeaderScrollBehavior() {
-  let lastScrollTop = 0;
-  const header = document.querySelector('.headerTabs, .sectionTabs');
-  const skinHeader = document.querySelector('.skinHeader');
-  
-  if (header || skinHeader) {
-    const targetElements = [header, skinHeader].filter(Boolean);
-    
-    window.addEventListener('scroll', function() {
-      let currentScroll = window.pageYOffset || document.documentElement.scrollTop;
-      
-      if (currentScroll > lastScrollTop && currentScroll > 50) {
-        // Scrolling down - hide headers
-        targetElements.forEach(el => {
-          el.classList.add('header-hidden');
-          el.classList.remove('header-visible');
-        });
-      } else {
-        // Scrolling up - show headers
-        targetElements.forEach(el => {
-          el.classList.add('header-visible');
-          el.classList.remove('header-hidden');
-        });
-      }
-      
-      lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
-    }, { passive: true });
-  }
-}
 
 /**
  * Implements staggered animations for list items using Intersection Observer
